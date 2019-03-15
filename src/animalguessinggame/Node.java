@@ -10,7 +10,7 @@ package animalguessinggame;
  * @author V244682
  */
 public class Node {
-     private int data;
+   private int data;
   private Node Left;
   private Node Right;
     

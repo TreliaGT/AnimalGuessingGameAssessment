@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
@@ -28,9 +29,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField txtQuestion;
     @FXML
-    private CheckBox CheckYes;
+    private RadioButton CheckYes;
     @FXML
-    private CheckBox CheckNo;
+    private RadioButton CheckNo;
     @FXML
     private Label LaddQuestion;
     @FXML
@@ -46,20 +47,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label LQuestion;
     @FXML
-    private CheckBox CheckQYes;
+    private RadioButton CheckQYes;
     @FXML
-    private CheckBox CheckQNo;
+    private RadioButton CheckQNo;
     @FXML
     private Button btnEnterInput;
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Pmain.setVisible(true);
     }    
+    
     
 }
