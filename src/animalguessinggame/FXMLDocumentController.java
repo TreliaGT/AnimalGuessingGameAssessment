@@ -53,11 +53,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnEnterInput;
     
-    
+    /***
+     * Start method which shows the main pane in the Gui and call the required methods
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Pmain.setVisible(true);
-    }    
+           settingTwoNodes();
+    }  
     
-    
+    /***
+     * A method that sets some of the nodes for the binary tree
+     */
+    public void settingTwoNodes(){
+        Node root = new Node("Does this animal have fur?");
+        Node node2 = new Node("It is a wolf?");
+        root.setYes(node2);
+        LQuestion.setText(root.getData());
+    }
+     
 }

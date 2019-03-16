@@ -10,39 +10,37 @@ package animalguessinggame;
  * @author V244682
  */
 public class Node {
-   private int data;
-  private Node Left;
-  private Node Right;
+   private String data;
+  private Node Yes;
+  private Node No;
     
-    public Node(int data){
+    public Node(String data){
         this.data = data;
-        Left = null;
-        Right = null;
+        Yes = null;
+        No = null;
     }
 
-    public int getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Node getLeft() {
-        return Left;
+    public Node getYes() {
+        return Yes;
     }
 
-    public void setLeft(Node Left) {
-        if(this.Left == null)
-        this.Left = Left;
+    public void setYes(Node Yes) {
+        this.Yes = Yes;
     }
 
-    public Node getRight() {
-        return Right;
+    public Node getNo() {
+        return No;
     }
 
-    public void setRight(Node Right) {
-        if(this.Right == null)
-        this.Right = Right;
+    public void setNo(Node No) {
+        this.No = No;
     }
 }
