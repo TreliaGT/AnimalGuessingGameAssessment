@@ -53,6 +53,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnEnterInput;
     
+    BTree btree = new BTree();
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -73,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
         Node node2 = new Node("It is a wolf?");
         root.setYes(node2);
         LQuestion.setText(root.getData());
-        
+        btree.setCurrentNode(root);
     }
 
     /***
@@ -111,7 +112,12 @@ public class FXMLDocumentController implements Initializable {
      */
     public void Answer(boolean yes, boolean no){
         if(yes == true){
+             if(btree.getCurrentNode() != null){
+                
+
+             }  else{
                  
+             } 
         } else if (no == true){
             
         } else{

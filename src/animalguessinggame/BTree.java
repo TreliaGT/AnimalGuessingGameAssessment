@@ -26,7 +26,7 @@ public class BTree {
         if (node.getData() == data) {
             return true;
         }
-        if (node.getLeft()!=null)
+        if (node.getNo()!=null)
             if (search(node.getNo(), data))
                 return true;
             if (node.getYes()!=null)
@@ -71,5 +71,5 @@ public class BTree {
         this.root = root;
     }
     
-    
+   
 }

@@ -42,10 +42,9 @@ public class Node {
 
     public void setNo(Node No) {
         this.No = No;
-    }
-
-    public Object getLeft() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
     
-}
+    
+  }  
+
