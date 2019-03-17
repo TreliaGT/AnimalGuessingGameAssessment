@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Node class
+ * sets and gets the node for the binary tree
  */
 package animalguessinggame;
 
@@ -10,8 +9,8 @@ package animalguessinggame;
  * @author V244682
  */
 public class Node {
-   private String data;
-  private Node Yes;
+   private String data; //type of data
+  private Node Yes; //two different nodes 
   private Node No;
     
     public Node(String data){
@@ -20,6 +19,7 @@ public class Node {
         No = null;
     }
 
+    //Setters & getters 
     public String getData() {
         return data;
     }
