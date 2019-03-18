@@ -30,9 +30,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField txtQuestion;
     @FXML
-    private Button CheckYes;
+    private RadioButton CheckYes;
     @FXML
-    private Button CheckNo;
+    private RadioButton CheckNo;
     @FXML
     private Label LaddQuestion;
     @FXML
@@ -84,6 +84,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void addNewAnimal(ActionEvent event) {
+        
     }
 
     /***
@@ -92,6 +93,11 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void showNewAnimal(ActionEvent event) {
+        String newanimal = txtnewAnimal.getText();
+        PgiveUp.setVisible(false);
+        PaddQuestion.setVisible(true);
+        LaddQuestion.setText("What Yes or No question would you ask to tell the difference between the animal I said and " + newanimal + "?");
+        
     }
 
     /***
@@ -105,11 +111,13 @@ public class FXMLDocumentController implements Initializable {
              
         Answer(yes,no, btree.getCurrentNode());
     }
+    
     /***
      * If statement event 
      * see what is answer to last question to then display the correct data
      * @param yes
      * @param no 
+     * @param node 
      */
     public void Answer(boolean yes, boolean no, Node node){
         if(yes == true){
@@ -121,33 +129,24 @@ public class FXMLDocumentController implements Initializable {
                    LQuestion.setText(btree.getCurrentNode().getData());
              }
         } else if (no == true){
-            if(node.getYes() == null){
+            if(node.getNo() == null){
                   Pmain.setVisible(false);
                   PgiveUp.setVisible(true);
              }else{
                   btree.setCurrentNode(node.getNo());
                    LQuestion.setText(btree.getCurrentNode().getData());
              }
-        } else{
+        }
+        else{
           JOptionPane.showMessageDialog(null, "There was an error, sorry but you must restart the program");
         }
+    }   
+
+    @FXML
+    private void continuePlaying(ActionEvent event) {
     }
 
-    /***
-     * Continue game after not being able to guessed the animal
-     * @param event 
-     */
     @FXML
-    private void continueGame(ActionEvent event) {
+    private void stopPlaying(ActionEvent event) {
     }
-    
-    /***
-    * Close the game 
-    * @param event 
-    */
-    @FXML
-    private void endGame(ActionEvent event) {
-    }
-
-    
 }

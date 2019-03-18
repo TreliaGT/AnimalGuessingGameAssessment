@@ -9,30 +9,33 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="animalguessinggame.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalguessinggame.FXMLDocumentController">
     <children>
-      <Pane fx:id="PaddQuestion" layoutX="14.0" layoutY="8.0" prefHeight="376.0" prefWidth="577.0" visible="false">
+      <Pane fx:id="PaddQuestion" layoutX="12.0" layoutY="12.0" prefHeight="376.0" prefWidth="577.0" visible="false">
          <children>
-            <TextField fx:id="txtQuestion" layoutX="42.0" layoutY="82.0" prefHeight="25.0" prefWidth="222.0" />
-            <Label fx:id="LaddQuestion" layoutX="43.0" layoutY="48.0" prefHeight="17.0" prefWidth="384.0" />
-            <Label layoutX="42.0" layoutY="137.0" text="Would your answer be Y or N to this question?" />
-            <Button fx:id="btnAddQuestion" layoutX="332.0" layoutY="200.0" mnemonicParsing="false" text="Add Question" onAction="#addNewAnimal" />
-            <Button layoutX="82.0" layoutY="324.0" mnemonicParsing="false" text="Yes" />
-            <Button layoutX="149.0" layoutY="324.0" mnemonicParsing="false" text="No" />
+            <TextField fx:id="txtQuestion" layoutX="42.0" layoutY="82.0" prefHeight="27.0" prefWidth="504.0" />
+            <Label fx:id="LaddQuestion" layoutX="43.0" layoutY="17.0" prefHeight="48.0" prefWidth="504.0" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="42.0" layoutY="137.0" text="Would your answer Y or N to this question?" />
+            <Button fx:id="btnAddQuestion" layoutX="332.0" layoutY="200.0" mnemonicParsing="false" onAction="#addNewAnimal" text="Add Question" />
+            <Button layoutX="82.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuePlaying" text="Yes" />
+            <Button layoutX="149.0" layoutY="324.0" mnemonicParsing="false" onAction="#stopPlaying" text="No" />
             <Label layoutX="49.0" layoutY="293.0" text="Do you wish to play again?" />
             <Line endX="403.0" layoutX="131.0" layoutY="260.0" startX="-100.0" stroke="#1aeb40" />
-            <Button fx:id="CheckYes" layoutX="42.0" layoutY="180.0" mnemonicParsing="false" text="Yes" onAction="#continueGame"  />
-            <Button fx:id="CheckNo" layoutX="146.0" layoutY="180.0" mnemonicParsing="false" text="No" onAction="#endGame" />
+            <RadioButton fx:id="CheckYes" layoutX="42.0" layoutY="180.0" mnemonicParsing="false" text="Yes" />
+            <RadioButton fx:id="CheckNo" layoutX="146.0" layoutY="180.0" mnemonicParsing="false" text="No" />
          </children>
       </Pane>
       <Pane fx:id="PgiveUp" layoutX="182.0" layoutY="89.0" prefHeight="200.0" prefWidth="237.0" visible="false">
          <children>
-            <Button fx:id="btnEnterNewAnimal" layoutX="163.0" layoutY="100.0" mnemonicParsing="false" text="Enter" onAction="#showNewAnimal" />
+            <Button fx:id="btnEnterNewAnimal" layoutX="163.0" layoutY="100.0" mnemonicParsing="false" onAction="#showNewAnimal" text="Enter" />
             <Label layoutX="24.0" layoutY="28.0" text="I give up. Tell me what is it?" />
             <TextField fx:id="txtnewAnimal" layoutX="22.0" layoutY="61.0" />
          </children>
       </Pane>
-      <Pane fx:id="Pmain" layoutX="14.0" layoutY="14.0" prefHeight="376.0" prefWidth="577.0">
+      <Pane fx:id="Pmain" layoutX="14.0" layoutY="14.0" prefHeight="376.0" prefWidth="577.0" visible="false">
          <children>
             <Label layoutX="154.0" layoutY="47.0" prefHeight="27.0" prefWidth="270.0" text="Think of an Animal and answer the questions.">
                <font>
@@ -40,7 +43,7 @@
                </font>
             </Label>
             <Label fx:id="LQuestion" layoutX="91.0" layoutY="95.0" prefHeight="17.0" prefWidth="402.0" textAlignment="CENTER" />
-            <Button fx:id="btnEnterInput" layoutX="267.0" layoutY="221.0" mnemonicParsing="false" text="Enter" onAction="#enterInput" />
+            <Button fx:id="btnEnterInput" layoutX="267.0" layoutY="221.0" mnemonicParsing="false" onAction="#enterInput" text="Enter" />
             <RadioButton fx:id="CheckQYes" layoutX="144.0" layoutY="171.0" mnemonicParsing="false" text="Yes" />
             <RadioButton fx:id="CheckQNo" layoutX="386.0" layoutY="171.0" mnemonicParsing="false" text="No" />
          </children>
