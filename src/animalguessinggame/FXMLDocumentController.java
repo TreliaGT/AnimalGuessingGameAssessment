@@ -54,7 +54,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnEnterInput;
     
-    BTree btree = new BTree();
+    //Variables for program
+      BTree btree = new BTree();
       Node root = new Node("Does this animal have fur?");
       Node node2 = new Node("It is a wolf?");
       String newanimal;
@@ -143,6 +144,7 @@ public class FXMLDocumentController implements Initializable {
     public void Answer(boolean yes, boolean no, Node node){
         if(yes == true){
              if(node.getYes() == null){
+                 txtnewAnimal.clear();
                   Pmain.setVisible(false);
                   PgiveUp.setVisible(true);
              }else{
@@ -151,6 +153,7 @@ public class FXMLDocumentController implements Initializable {
              }
         } else if (no == true){
             if(node.getNo() == null){
+                  txtnewAnimal.clear();
                   Pmain.setVisible(false);
                   PgiveUp.setVisible(true);
              }else{
