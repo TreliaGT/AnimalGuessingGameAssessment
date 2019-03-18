@@ -183,6 +183,7 @@ public class FXMLDocumentController implements Initializable {
           Pmain.setVisible(true);
           PaddQuestion.setVisible(false);
           LQuestion.setText(root.getData());
+          btree.setCurrentNode(root);
     }
 
     @FXML
