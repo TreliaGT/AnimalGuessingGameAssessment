@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -59,6 +58,8 @@ public class FXMLDocumentController implements Initializable {
       Node root = new Node("Does this animal have fur?");
       Node node2 = new Node("It is a wolf?");
       String newanimal;
+      Boolean Question;
+      
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -86,26 +87,35 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void addNewAnimal(ActionEvent event) {
-          Node next = new Node(txtQuestion.getText());
-        if(CheckQNo.isSelected() == true){
-            btree.getCurrentNode().setNo(next);
-            animalquestion();           
-        }else if(CheckQYes.isSelected() == true){ 
-            btree.getCurrentNode().setYes(next);
-             animalquestion();
+        
+          Node i = new Node(txtQuestion.getText());
+        if(Question == false) { 
+            btree.getCurrentNode().setNo(i);
+            
+           
+        }else if(Question == true){ 
+            btree.getCurrentNode().setYes(i);
+        
+
         }else{
-            JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
+            JOptionPane.showMessageDialog(null, "There was an error");
         }
+        btree.setCurrentNode(i);
+            animalquestion();
     }
     
+    /**
+     * Adds what is the animal question
+     */
     public void animalquestion(){
-        Node next2 = new Node("Is it " + newanimal + "?");
+    
+        Node n = new Node("Is it " + newanimal + "?");
         if(CheckNo.isSelected() == true){
-             btree.getCurrentNode().setNo(next2);
+             btree.getCurrentNode().setNo(n);
         } else if(CheckYes.isSelected() == true){
-            btree.getCurrentNode().setYes(next2);
+            btree.getCurrentNode().setYes(n);
         }else{
-                 JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
+               JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
         }
     }
             
@@ -147,6 +157,7 @@ public class FXMLDocumentController implements Initializable {
                  txtnewAnimal.clear();
                   Pmain.setVisible(false);
                   PgiveUp.setVisible(true);
+                  Question = true;
              }else{
                   btree.setCurrentNode(node.getYes());
                    LQuestion.setText(btree.getCurrentNode().getData());
@@ -156,6 +167,7 @@ public class FXMLDocumentController implements Initializable {
                   txtnewAnimal.clear();
                   Pmain.setVisible(false);
                   PgiveUp.setVisible(true);
+                   Question = false;
              }else{
                   btree.setCurrentNode(node.getNo());
                    LQuestion.setText(btree.getCurrentNode().getData());
@@ -176,5 +188,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void stopPlaying(ActionEvent event) {
         System.exit(0);
+    }
+
+    @FXML
+    private void amIRight(ActionEvent event) {
+        
+        
     }
 }
