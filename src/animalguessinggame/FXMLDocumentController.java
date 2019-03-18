@@ -57,6 +57,7 @@ public class FXMLDocumentController implements Initializable {
     BTree btree = new BTree();
       Node root = new Node("Does this animal have fur?");
       Node node2 = new Node("It is a wolf?");
+      String newanimal;
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -84,8 +85,29 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void addNewAnimal(ActionEvent event) {
-        
+          Node next = new Node(txtQuestion.getText());
+        if(CheckQNo.isSelected() == true){
+            btree.getCurrentNode().setNo(next);
+            animalquestion();           
+        }else if(CheckQYes.isSelected() == true){ 
+            btree.getCurrentNode().setYes(next);
+             animalquestion();
+        }else{
+            JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
+        }
     }
+    
+    public void animalquestion(){
+        Node next2 = new Node("Is it " + newanimal + "?");
+        if(CheckNo.isSelected() == true){
+             btree.getCurrentNode().setNo(next2);
+        } else if(CheckYes.isSelected() == true){
+            btree.getCurrentNode().setYes(next2);
+        }else{
+                 JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
+        }
+    }
+            
 
     /***
      * Shows the menu to add new animals
@@ -93,11 +115,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void showNewAnimal(ActionEvent event) {
-        String newanimal = txtnewAnimal.getText();
+         newanimal = txtnewAnimal.getText();
         PgiveUp.setVisible(false);
         PaddQuestion.setVisible(true);
         LaddQuestion.setText("What Yes or No question would you ask to tell the difference between the animal I said and " + newanimal + "?");
-        
     }
 
     /***
@@ -138,15 +159,19 @@ public class FXMLDocumentController implements Initializable {
              }
         }
         else{
-          JOptionPane.showMessageDialog(null, "There was an error, sorry but you must restart the program");
+          JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
         }
     }   
 
     @FXML
     private void continuePlaying(ActionEvent event) {
+          Pmain.setVisible(true);
+          PaddQuestion.setVisible(false);
+          LQuestion.setText(root.getData());
     }
 
     @FXML
     private void stopPlaying(ActionEvent event) {
+        System.exit(0);
     }
 }

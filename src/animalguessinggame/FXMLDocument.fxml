@@ -18,7 +18,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label layoutX="42.0" layoutY="137.0" text="Would your answer Y or N to this question?" />
+            <Label layoutX="42.0" layoutY="137.0" text="Would your answer be Y or N to this question?" />
             <Button fx:id="btnAddQuestion" layoutX="332.0" layoutY="200.0" mnemonicParsing="false" onAction="#addNewAnimal" text="Add Question" />
             <Button layoutX="82.0" layoutY="324.0" mnemonicParsing="false" onAction="#continuePlaying" text="Yes" />
             <Button layoutX="149.0" layoutY="324.0" mnemonicParsing="false" onAction="#stopPlaying" text="No" />
