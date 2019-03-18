@@ -52,14 +52,21 @@ public class FXMLDocumentController implements Initializable {
     private RadioButton CheckQNo;
     @FXML
     private Button btnEnterInput;
-    
-    //Variables for program
+    @FXML
+    private Button btnContinue;
+    @FXML
+    private Button btnstop;
+    @FXML
+    private Label lagain;
+      
+      //Variables for program
       BTree btree = new BTree();
       Node root = new Node("Does this animal have fur?");
       Node node2 = new Node("It is a wolf?");
       String newanimal;
       Boolean Question;
-      
+    @FXML
+    private Pane pAgain;
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -127,6 +134,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void showNewAnimal(ActionEvent event) {
          newanimal = txtnewAnimal.getText();
+         txtQuestion.clear();
+         CheckNo.setSelected(false);
+         CheckYes.setSelected(false);
+         pAgain.setVisible(true);
         PgiveUp.setVisible(false);
         PaddQuestion.setVisible(true);
         LaddQuestion.setText("What Yes or No question would you ask to tell the difference between the animal I said and " + newanimal + "?");
@@ -176,14 +187,18 @@ public class FXMLDocumentController implements Initializable {
         else{
           JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
         }
+        CheckQYes.setSelected(false);
+         CheckQNo.setSelected(false);
     }   
 
     @FXML
     private void continuePlaying(ActionEvent event) {
           Pmain.setVisible(true);
+          pAgain.setVisible(false);
           PaddQuestion.setVisible(false);
           LQuestion.setText(root.getData());
           btree.setCurrentNode(root);
+          
     }
 
     @FXML
@@ -193,7 +208,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void amIRight(ActionEvent event) {
-        
-        
+        Pmain.setVisible(false);
+         pAgain.setVisible(true);
     }
 }
