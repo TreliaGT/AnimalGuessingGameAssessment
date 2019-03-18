@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,6 +55,8 @@ public class FXMLDocumentController implements Initializable {
     private Button btnEnterInput;
     
     BTree btree = new BTree();
+      Node root = new Node("Does this animal have fur?");
+      Node node2 = new Node("It is a wolf?");
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -70,8 +73,6 @@ public class FXMLDocumentController implements Initializable {
      * A method that sets some of the nodes for the binary tree
      */
     public void settingNodes(){
-        Node root = new Node("Does this animal have fur?");
-        Node node2 = new Node("It is a wolf?");
         root.setYes(node2);
         LQuestion.setText(root.getData());
         btree.setCurrentNode(root);
@@ -102,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
             boolean yes = CheckQYes.isSelected();
              boolean no = CheckQNo.isSelected(); 
              
-        Answer(yes,no );
+        Answer(yes,no, btree.getCurrentNode());
     }
     /***
      * If statement event 
@@ -110,18 +111,25 @@ public class FXMLDocumentController implements Initializable {
      * @param yes
      * @param no 
      */
-    public void Answer(boolean yes, boolean no){
+    public void Answer(boolean yes, boolean no, Node node){
         if(yes == true){
-             if(btree.getCurrentNode() != null){
-                
-
-             }  else{
-                 
-             } 
+             if(node.getYes() == null){
+                  Pmain.setVisible(false);
+                  PgiveUp.setVisible(true);
+             }else{
+                  btree.setCurrentNode(node.getYes());
+                   LQuestion.setText(btree.getCurrentNode().getData());
+             }
         } else if (no == true){
-            
+            if(node.getYes() == null){
+                  Pmain.setVisible(false);
+                  PgiveUp.setVisible(true);
+             }else{
+                  btree.setCurrentNode(node.getNo());
+                   LQuestion.setText(btree.getCurrentNode().getData());
+             }
         } else{
-            
+          JOptionPane.showMessageDialog(null, "There was an error, sorry but you must restart the program");
         }
     }
 

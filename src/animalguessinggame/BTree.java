@@ -70,6 +70,5 @@ public class BTree {
     public void setRoot(Node root) {
         this.root = root;
     }
-    
-   
+            
 }
