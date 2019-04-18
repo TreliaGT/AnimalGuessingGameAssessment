@@ -8,7 +8,7 @@ package animalguessinggame;
  *
  * @author V244682
  */
-public class Node {
+public class Node implements java.io.Serializable{
    private String data; //type of data
   private Node Yes; //two different nodes 
   private Node No;

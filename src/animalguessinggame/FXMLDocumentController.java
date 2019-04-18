@@ -5,6 +5,11 @@
  */
 package animalguessinggame;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -58,15 +63,15 @@ public class FXMLDocumentController implements Initializable {
     private Button btnstop;
     @FXML
     private Label lagain;
-      
+    @FXML
+    private Pane pAgain; 
+    
       //Variables for program
       BTree btree = new BTree();
-      Node root = new Node("Does this animal have fur?");
-      Node node2 = new Node("It is a wolf?");
+      Node root; 
       String newanimal;
       Boolean Question;
-    @FXML
-    private Pane pAgain;
+   
     /***
      * Start method which shows the main pane in the GUI 
      * calls settingNodes Method
@@ -76,18 +81,30 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Pmain.setVisible(true);
-           settingNodes();
+          // settingNodes();
+          readData();
     }  
-    
-    /***
-     * A method that sets some of the nodes for the binary tree
+    /**
+     * read data file
      */
-    public void settingNodes(){
-        root.setYes(node2);
-        LQuestion.setText(root.getData());
+    public void readData(){
+          try {
+         FileInputStream fileIn = new FileInputStream("saveTreeData.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         root = (Node) in.readObject();
+         in.close();
+         fileIn.close();
+      } catch (IOException i) {
+          JOptionPane.showMessageDialog(null, "There was an error");
+         return;
+      } catch (ClassNotFoundException c) {
+            JOptionPane.showMessageDialog(null, "class was't found");
+         return;
+      }
+       LQuestion.setText(root.getData());
         btree.setCurrentNode(root);
     }
-
+   
     /***
      * Adds new Animal to the binary tree
      * @param event 
@@ -98,12 +115,8 @@ public class FXMLDocumentController implements Initializable {
           Node i = new Node(txtQuestion.getText());
         if(Question == false) { 
             btree.getCurrentNode().setNo(i);
-            
-           
         }else if(Question == true){ 
             btree.getCurrentNode().setYes(i);
-        
-
         }else{
             JOptionPane.showMessageDialog(null, "There was an error");
         }
@@ -126,7 +139,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
             
-
     /***
      * Shows the menu to add new animals
      * @param event 
@@ -189,8 +201,12 @@ public class FXMLDocumentController implements Initializable {
         }
         CheckQYes.setSelected(false);
          CheckQNo.setSelected(false);
-    }   
-
+    } 
+    
+    /**
+    * Continue playing button, restarts the game
+    * @param event 
+    */
     @FXML
     private void continuePlaying(ActionEvent event) {
           Pmain.setVisible(true);
@@ -200,12 +216,34 @@ public class FXMLDocumentController implements Initializable {
           btree.setCurrentNode(root);
           
     }
-
+    
+    /**
+    * end the game button loads save data method
+    * @param event 
+    */
     @FXML
     private void stopPlaying(ActionEvent event) {
-        System.exit(0);
+        savedata();
     }
 
+    public void savedata(){
+          try {
+         FileOutputStream fileOut =
+         new FileOutputStream("saveTreeData.ser");
+         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         out.writeObject(root);
+         out.close();
+         fileOut.close();
+          JOptionPane.showMessageDialog(null, "saved data");
+      } catch (IOException i) {
+         JOptionPane.showMessageDialog(null, "Error with saving");
+      }
+          System.exit(0);
+    }
+    /**
+     * just shows the the pAgain panel
+     * @param event 
+     */
     @FXML
     private void amIRight(ActionEvent event) {
         Pmain.setVisible(false);
