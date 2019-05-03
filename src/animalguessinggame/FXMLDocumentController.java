@@ -69,6 +69,8 @@ public class FXMLDocumentController implements Initializable {
       //Variables for program
       BTree btree = new BTree();
       Node root; 
+     /*   Node root = new Node("Does this animal have fur?");
+      Node node2 = new Node("It is a wolf?");*/
       String newanimal;
       Boolean Question;
    
@@ -81,15 +83,22 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Pmain.setVisible(true);
-          // settingNodes();
+         // settingNodes();
           readData();
     }  
+    
+   /* public void settingNodes(){
+             root.setYes(node2);
+        LQuestion.setText(root.getData());
+        btree.setCurrentNode(root);
+    }*/
+    
     /**
      * read data file
      */
     public void readData(){
           try {
-         FileInputStream fileIn = new FileInputStream("saveTreeData.ser");
+         FileInputStream fileIn = new FileInputStream("saveTreeData.dat");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          root = (Node) in.readObject();
          in.close();
@@ -152,7 +161,7 @@ public class FXMLDocumentController implements Initializable {
          pAgain.setVisible(true);
         PgiveUp.setVisible(false);
         PaddQuestion.setVisible(true);
-        LaddQuestion.setText("What Yes or No question would you ask to tell the difference between the animal I said and " + newanimal + "?");
+        LaddQuestion.setText("What Yes or No question would you ask to tell the difference between the animal from before and " + newanimal + "?");
     }
 
     /***
