@@ -89,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
      */
     public void readData(){
           try {
-         FileInputStream fileIn = new FileInputStream("saveTreeData.dat");
+         FileInputStream fileIn = new FileInputStream("saveTreeData.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          root = (Node) in.readObject();
          in.close();
