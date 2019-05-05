@@ -44,7 +44,5 @@ public class Node implements java.io.Serializable{
         this.No = No;
     
     }
-    
-  
   }  
 

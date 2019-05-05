@@ -17,21 +17,20 @@ public class BTree {
     public BTree() {
         root = null;
     }
-
+//setters and getters
     public Node getRoot() {
         return root;
     }
-
+ 
+     public void setRoot(Node root) {
+        this.root = root;
+    }
+      
     public Node getCurrentNode() {
         return currentNode;
     }
 
     public void setCurrentNode(Node currentNode) {
         this.currentNode = currentNode;
-    }
-
-    public void setRoot(Node root) {
-        this.root = root;
-    }
-            
+    }       
 }

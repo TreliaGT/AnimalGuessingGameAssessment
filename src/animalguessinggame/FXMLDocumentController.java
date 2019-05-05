@@ -86,7 +86,9 @@ public class FXMLDocumentController implements Initializable {
          // settingNodes();
           readData();
     }  
-    
+    /***
+     * setting default code when starting the application 
+     */
    /* public void settingNodes(){
              root.setYes(node2);
         LQuestion.setText(root.getData());
@@ -235,6 +237,9 @@ public class FXMLDocumentController implements Initializable {
         savedata();
     }
 
+    /**
+     * save the binary tree to a binary file.
+     */
     public void savedata(){
           try {
          FileOutputStream fileOut =
@@ -249,6 +254,7 @@ public class FXMLDocumentController implements Initializable {
       }
           System.exit(0);
     }
+    
     /**
      * just shows the the pAgain panel
      * @param event 
@@ -258,4 +264,5 @@ public class FXMLDocumentController implements Initializable {
         Pmain.setVisible(false);
          pAgain.setVisible(true);
     }
+    
 }
