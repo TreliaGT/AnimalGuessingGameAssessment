@@ -6,12 +6,9 @@
 
 import animalguessinggame.BTree;
 import animalguessinggame.Node;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 
 /**
  *
@@ -28,8 +25,8 @@ public class AnimalGuessingGameJUnitTest {
         Node i = new Node("Does it eat grass?");                
         btree.getCurrentNode().setYes(i);
         btree.setCurrentNode(i);
-           
-        assertEquals("Does it eat grass?", btree.getCurrentNode().getData());
+       String getData = btree.getCurrentNode().getData().toString();
+        assertEquals("Does it eat grass?", getData);
     }
     
      @Test
@@ -63,13 +60,43 @@ public class AnimalGuessingGameJUnitTest {
               answer = false;
           }
         }else{
-              if(nulls == null){
+           if(nulls == null){
               answer = true;
           }else{
               answer = false;
           } 
         }
         assertEquals(true , answer );
+    }
+    
+    @Test 
+    public void testaddNewAnimal(){
+        boolean question = false;
+        String Answer;
+       if(question == false){
+              Answer = "false";
+        }else if (question == true){
+           Answer = "true";
+          }else{
+            Answer = "null";
+        }
+        
+        assertEquals("false" , Answer );
+    }
+    
+    @Test 
+    public void testaddNewAnimal2(){
+        boolean question = false;
+        String Answer;
+       if(question == false){
+              Answer = "false";
+        }else if (question == true){
+           Answer = "true";
+          }else{
+            Answer = "null";
+        }
+        
+        assertEquals("true" , Answer );
     }
  }
 
