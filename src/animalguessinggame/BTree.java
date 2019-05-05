@@ -17,48 +17,11 @@ public class BTree {
     public BTree() {
         root = null;
     }
-    
-    public boolean search(String data) {
-        return search(root, data);
-    }
-    
-    public boolean search(Node node, String data) {
-        if (node.getData() == data) {
-            return true;
-        }
-        if (node.getNo()!=null)
-            if (search(node.getNo(), data))
-                return true;
-            if (node.getYes()!=null)
-                if (search(node.getYes(), data))
-                    return true;
-            return false;
-    }
-   
-    
+
     public Node getRoot() {
         return root;
     }
-    
-    public boolean isEmpty() {
-        return root == null;
-    }
-    
-    public int countNodes() {
-        return countNodes(root);
-    }
-    public int countNodes(Node node) {
-        int count=1;
-        if (node==null) {
-            return 0;
-        } else {
-            count += countNodes(node.getNo());  
-            count += countNodes(node.getYes());  
-            return count;
-        }        
-    }
-    
-   
+
     public Node getCurrentNode() {
         return currentNode;
     }
