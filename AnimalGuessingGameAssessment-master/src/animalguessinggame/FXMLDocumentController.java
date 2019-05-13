@@ -69,8 +69,6 @@ public class FXMLDocumentController implements Initializable {
       //Variables for program
       BTree btree = new BTree();
       Node root; 
-     /*   Node root = new Node("Does this animal have fur?");
-      Node node2 = new Node("It is a wolf?");*/
       String newanimal;
       Boolean Question;
    
@@ -86,14 +84,6 @@ public class FXMLDocumentController implements Initializable {
          // settingNodes();
           readData();
     }  
-    /***
-     * setting default code when starting the application 
-     */
-   /* public void settingNodes(){
-             root.setYes(node2);
-        LQuestion.setText(root.getData());
-        btree.setCurrentNode(root);
-    }*/
     
     /**
      * read data file
