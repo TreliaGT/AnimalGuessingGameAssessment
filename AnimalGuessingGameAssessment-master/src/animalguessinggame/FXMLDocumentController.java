@@ -81,7 +81,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Pmain.setVisible(true);
-         // settingNodes();
           readData();
     }  
     
@@ -115,9 +114,9 @@ public class FXMLDocumentController implements Initializable {
         
           Node i = new Node(txtQuestion.getText());
         if(Question == false) { 
-            btree.getCurrentNode().setNo(i);
+            btree.getCurrentNode().setNo(i);//shows no
         }else if(Question == true){ 
-            btree.getCurrentNode().setYes(i);
+            btree.getCurrentNode().setYes(i);//shows yes
         }else{
             JOptionPane.showMessageDialog(null, "There was an error");
         }
@@ -132,9 +131,9 @@ public class FXMLDocumentController implements Initializable {
     
         Node n = new Node("Is it " + newanimal + "?");
         if(CheckNo.isSelected() == true){
-             btree.getCurrentNode().setNo(n);
+             btree.getCurrentNode().setNo(n);//shows no
         } else if(CheckYes.isSelected() == true){
-            btree.getCurrentNode().setYes(n);
+            btree.getCurrentNode().setYes(n);//shows yes
         }else{
                JOptionPane.showMessageDialog(null, "Must pick Yes or No not both");
         }
