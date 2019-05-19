@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javax.swing.JOptionPane;
 
@@ -65,7 +66,12 @@ public class FXMLDocumentController implements Initializable {
     private Label lagain;
     @FXML
     private Pane pAgain; 
-    
+     @FXML
+    private ToggleGroup guess;
+    @FXML
+    private ToggleGroup add;
+    @FXML
+    private Pane ending;
       //Variables for program
       BTree btree = new BTree();
       Node root; 
@@ -191,6 +197,7 @@ public class FXMLDocumentController implements Initializable {
                  txtnewAnimal.clear();
                    Pmain.setVisible(false);
                     pAgain.setVisible(true);
+                    ending.setVisible(true);
                   Question = true;
              }else{
                   btree.setCurrentNode(node.getYes());
@@ -223,9 +230,9 @@ public class FXMLDocumentController implements Initializable {
           Pmain.setVisible(true);
           pAgain.setVisible(false);
           PaddQuestion.setVisible(false);
+          ending.setVisible(true);    
           LQuestion.setText(root.getData());
           btree.setCurrentNode(root);
-          
     }
     
     /**
@@ -254,15 +261,8 @@ public class FXMLDocumentController implements Initializable {
       }
           System.exit(0);
     }
+
     
-    /**
-     * just shows the the pAgain panel
-     * @param event 
-     */
-    @FXML
-    private void amIRight(ActionEvent event) {
-        Pmain.setVisible(false);
-         pAgain.setVisible(true);
-    }
+
     
 }

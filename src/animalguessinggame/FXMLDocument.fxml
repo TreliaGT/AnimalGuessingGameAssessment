@@ -4,12 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalguessinggame.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalguessinggame.FXMLDocumentController">
     <children>
       <Pane fx:id="PaddQuestion" layoutX="12.0" layoutY="12.0" prefHeight="243.0" prefWidth="577.0" visible="false">
          <children>
@@ -20,8 +21,11 @@
                </font></Label>
             <Label layoutX="42.0" layoutY="137.0" text="Would your answer be Y or N to this question?" />
             <Button fx:id="btnAddQuestion" layoutX="332.0" layoutY="200.0" mnemonicParsing="false" onAction="#addNewAnimal" text="Add Question" />
-            <RadioButton fx:id="CheckYes" layoutX="42.0" layoutY="180.0" mnemonicParsing="false" text="Yes" />
-            <RadioButton fx:id="CheckNo" layoutX="146.0" layoutY="180.0" mnemonicParsing="false" text="No" />
+            <RadioButton fx:id="CheckYes" layoutX="42.0" layoutY="180.0" mnemonicParsing="false" text="Yes">
+               <toggleGroup>
+                  <ToggleGroup fx:id="guess" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="CheckNo" layoutX="146.0" layoutY="180.0" mnemonicParsing="false" text="No" toggleGroup="$guess" />
          </children>
       </Pane>
       <Pane fx:id="PgiveUp" layoutX="182.0" layoutY="89.0" prefHeight="200.0" prefWidth="237.0" visible="false">
@@ -40,9 +44,11 @@
             </Label>
             <Label fx:id="LQuestion" layoutX="91.0" layoutY="95.0" prefHeight="17.0" prefWidth="402.0" textAlignment="CENTER" />
             <Button fx:id="btnEnterInput" layoutX="315.0" layoutY="221.0" mnemonicParsing="false" onAction="#enterInput" text="Enter" />
-            <RadioButton fx:id="CheckQYes" layoutX="144.0" layoutY="171.0" mnemonicParsing="false" text="Yes" />
-            <RadioButton fx:id="CheckQNo" layoutX="386.0" layoutY="171.0" mnemonicParsing="false" text="No" />
-            <Button layoutX="205.0" layoutY="221.0" mnemonicParsing="false" onAction="#amIRight" text="Am I right?" />
+            <RadioButton fx:id="CheckQYes" layoutX="144.0" layoutY="171.0" mnemonicParsing="false" text="Yes">
+               <toggleGroup>
+                  <ToggleGroup fx:id="add" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="CheckQNo" layoutX="386.0" layoutY="171.0" mnemonicParsing="false" text="No" toggleGroup="$add" />
          </children>
       </Pane>
       <Pane fx:id="pAgain" layoutX="19.0" layoutY="255.0" prefHeight="127.0" prefWidth="562.0" visible="false">
@@ -51,6 +57,15 @@
             <Button fx:id="btnstop" layoutX="135.0" layoutY="64.0" mnemonicParsing="false" onAction="#stopPlaying" text="No" />
             <Button fx:id="btnContinue" layoutX="57.0" layoutY="64.0" mnemonicParsing="false" onAction="#continuePlaying" text="Yes" />
             <Label fx:id="lagain" layoutX="48.0" layoutY="33.0" text="Do you wish to play again?" />
+         </children>
+      </Pane>
+      <Pane fx:id="ending" layoutX="19.0" layoutY="14.0" prefHeight="265.0" prefWidth="569.0" visible="false">
+         <children>
+            <Label layoutX="186.0" layoutY="75.0" text="I got it Right!">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
     </children>
