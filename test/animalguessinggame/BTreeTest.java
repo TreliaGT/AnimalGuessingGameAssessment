@@ -71,4 +71,18 @@ public class BTreeTest {
         assertEquals(expResult, result);
     }
     
+    @Test
+    public void addquestion(){
+    BTree instance = new BTree();
+    instance.setRoot(root);
+
+    Node yes = new Node("is it Monkey");
+    Node no = new Node("is it Chicken");
+    root.setYes(yes);
+    root.setNo(no);
+
+    assertEquals(root.getYes(), yes);
+    assertEquals(root.getNo(), no);
+    }
+    
 }
