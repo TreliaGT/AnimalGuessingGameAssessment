@@ -189,8 +189,8 @@ public class FXMLDocumentController implements Initializable {
         if(yes == true){
              if(node.getYes() == null){
                  txtnewAnimal.clear();
-                  Pmain.setVisible(false);
-                  PgiveUp.setVisible(true);
+                   Pmain.setVisible(false);
+                    pAgain.setVisible(true);
                   Question = true;
              }else{
                   btree.setCurrentNode(node.getYes());
